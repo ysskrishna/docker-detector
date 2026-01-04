@@ -156,18 +156,10 @@ def test_force_refresh_clears_cache_and_rechecks():
 
 def test_returns_false_on_non_linux_platforms():
     """Test that is_docker returns False on non-Linux platforms."""
-    from is_docker.core import _is_docker_cached
-    
-    # Clear any existing cache first
-    _is_docker_cached.cache_clear()
-    
     with mock.patch("sys.platform", "darwin"):  # macOS
-        assert is_docker() is False
         assert is_docker(force_refresh=True) is False
+        assert is_docker() is False
 
-    # Clear cache again for next platform test
-    _is_docker_cached.cache_clear()
-    
     with mock.patch("sys.platform", "win32"):  # Windows
-        assert is_docker() is False
         assert is_docker(force_refresh=True) is False
+        assert is_docker() is False
