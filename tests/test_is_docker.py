@@ -1,0 +1,126 @@
+from pathlib import Path
+from unittest import mock
+
+from is_docker.core import is_docker
+
+# Helper to reset the lru_cache between tests
+def reset_cache():
+    is_docker.cache_clear()
+
+
+def test_detects_docker_via_dockerenv():
+    reset_cache()
+
+    def path_constructor(*args, **kwargs):
+        path_str = str(args[0]) if args else ""
+        mock_path = mock.MagicMock(spec=Path)
+        mock_path.__str__ = mock.Mock(return_value=path_str)
+        mock_path.exists = mock.Mock(return_value=(path_str == "/.dockerenv"))
+        mock_path.read_text = mock.Mock()
+        return mock_path
+
+    with mock.patch("sys.platform", "linux"), \
+         mock.patch("is_docker.core.Path", side_effect=path_constructor):
+        assert is_docker() is True
+
+
+def test_detects_docker_via_cgroup():
+    reset_cache()
+
+    def path_constructor(*args, **kwargs):
+        path_str = str(args[0]) if args else ""
+        mock_path = mock.MagicMock(spec=Path)
+        mock_path.__str__ = mock.Mock(return_value=path_str)
+        mock_path.exists = mock.Mock(return_value=False)
+        
+        def read_text():
+            if path_str == "/proc/self/cgroup":
+                return "xxx docker yyyy"
+            raise FileNotFoundError()
+        
+        mock_path.read_text = mock.Mock(side_effect=read_text)
+        return mock_path
+
+    with mock.patch("sys.platform", "linux"), \
+         mock.patch("is_docker.core.Path", side_effect=path_constructor):
+        assert is_docker() is True
+
+
+def test_detects_docker_via_mountinfo():
+    reset_cache()
+
+    def path_constructor(*args, **kwargs):
+        path_str = str(args[0]) if args else ""
+        mock_path = mock.MagicMock(spec=Path)
+        mock_path.__str__ = mock.Mock(return_value=path_str)
+        mock_path.exists = mock.Mock(return_value=False)
+        
+        def read_text():
+            if path_str == "/proc/self/cgroup":
+                return "0::/"  # Cgroups v2 format
+            if path_str == "/proc/self/mountinfo":
+                return "1234 24 0:6 /docker/containers/abc123/hostname /etc/hostname rw,nosuid"
+            raise FileNotFoundError()
+        
+        mock_path.read_text = mock.Mock(side_effect=read_text)
+        return mock_path
+
+    with mock.patch("sys.platform", "linux"), \
+         mock.patch("is_docker.core.Path", side_effect=path_constructor):
+        assert is_docker() is True
+
+
+def test_not_inside_docker_container():
+    reset_cache()
+
+    def path_constructor(*args, **kwargs):
+        path_str = str(args[0]) if args else ""
+        mock_path = mock.MagicMock(spec=Path)
+        mock_path.__str__ = mock.Mock(return_value=path_str)
+        mock_path.exists = mock.Mock(return_value=False)
+        mock_path.read_text = mock.Mock(side_effect=FileNotFoundError())
+        return mock_path
+
+    with mock.patch("sys.platform", "linux"), \
+         mock.patch("is_docker.core.Path", side_effect=path_constructor):
+        assert is_docker() is False
+
+
+def test_caching_works_correctly():
+    reset_cache()
+
+    stat_call_count = 0
+    read_call_count = 0
+
+    def path_constructor(*args, **kwargs):
+        path_str = str(args[0]) if args else ""
+        mock_path = mock.MagicMock(spec=Path)
+        mock_path.__str__ = mock.Mock(return_value=path_str)
+        
+        def exists():
+            nonlocal stat_call_count
+            stat_call_count += 1
+            return False
+        
+        def read_text():
+            nonlocal read_call_count
+            read_call_count += 1
+            if path_str == "/proc/self/cgroup":
+                return "xxx docker yyyy"
+            raise FileNotFoundError()
+        
+        mock_path.exists = mock.Mock(side_effect=exists)
+        mock_path.read_text = mock.Mock(side_effect=read_text)
+        return mock_path
+
+    with mock.patch("sys.platform", "linux"), \
+         mock.patch("is_docker.core.Path", side_effect=path_constructor):
+        # First call
+        assert is_docker() is True
+        assert stat_call_count == 1
+        assert read_call_count == 1
+
+        # Second call - should use cache
+        assert is_docker() is True
+        assert stat_call_count == 1  # Should not increase
+        assert read_call_count == 1  # Should not increase
