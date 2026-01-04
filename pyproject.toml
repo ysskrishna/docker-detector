@@ -1,7 +1,7 @@
 [project]
 name = "is-docker"
-version = "0.1.0"
-description = "Python port of is-docker npm package. Check if the process is running inside a Docker container."
+version = "1.0.0"
+description = "Detect if your Python process is running inside a Docker container — inspired by the popular is-docker npm package. Works on Linux, with optional cache refresh for repeated checks."
 readme = "README.md"
 requires-python = ">=3.8"
 authors = [
