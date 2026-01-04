@@ -3,14 +3,8 @@ from unittest import mock
 
 from is_docker.core import is_docker
 
-# Helper to reset the lru_cache between tests
-def reset_cache():
-    is_docker.cache_clear()
-
 
 def test_detects_docker_via_dockerenv():
-    reset_cache()
-
     def path_constructor(*args, **kwargs):
         path_str = str(args[0]) if args else ""
         mock_path = mock.MagicMock(spec=Path)
@@ -21,12 +15,10 @@ def test_detects_docker_via_dockerenv():
 
     with mock.patch("sys.platform", "linux"), \
          mock.patch("is_docker.core.Path", side_effect=path_constructor):
-        assert is_docker() is True
+        assert is_docker(force_refresh=True) is True
 
 
 def test_detects_docker_via_cgroup():
-    reset_cache()
-
     def path_constructor(*args, **kwargs):
         path_str = str(args[0]) if args else ""
         mock_path = mock.MagicMock(spec=Path)
@@ -43,12 +35,10 @@ def test_detects_docker_via_cgroup():
 
     with mock.patch("sys.platform", "linux"), \
          mock.patch("is_docker.core.Path", side_effect=path_constructor):
-        assert is_docker() is True
+        assert is_docker(force_refresh=True) is True
 
 
 def test_detects_docker_via_mountinfo():
-    reset_cache()
-
     def path_constructor(*args, **kwargs):
         path_str = str(args[0]) if args else ""
         mock_path = mock.MagicMock(spec=Path)
@@ -67,12 +57,10 @@ def test_detects_docker_via_mountinfo():
 
     with mock.patch("sys.platform", "linux"), \
          mock.patch("is_docker.core.Path", side_effect=path_constructor):
-        assert is_docker() is True
+        assert is_docker(force_refresh=True) is True
 
 
 def test_not_inside_docker_container():
-    reset_cache()
-
     def path_constructor(*args, **kwargs):
         path_str = str(args[0]) if args else ""
         mock_path = mock.MagicMock(spec=Path)
@@ -83,12 +71,10 @@ def test_not_inside_docker_container():
 
     with mock.patch("sys.platform", "linux"), \
          mock.patch("is_docker.core.Path", side_effect=path_constructor):
-        assert is_docker() is False
+        assert is_docker(force_refresh=True) is False
 
 
 def test_caching_works_correctly():
-    reset_cache()
-
     stat_call_count = 0
     read_call_count = 0
 
@@ -115,8 +101,8 @@ def test_caching_works_correctly():
 
     with mock.patch("sys.platform", "linux"), \
          mock.patch("is_docker.core.Path", side_effect=path_constructor):
-        # First call
-        assert is_docker() is True
+        # First call - force refresh to start fresh
+        assert is_docker(force_refresh=True) is True
         assert stat_call_count == 1
         assert read_call_count == 1
 
