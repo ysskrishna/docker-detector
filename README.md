@@ -1,7 +1,7 @@
 # Is Docker
 
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/ysskrishna/is-docker/blob/main/LICENSE)
 ![Tests](https://github.com/ysskrishna/is-docker/actions/workflows/test.yml/badge.svg)
 
 Detect if your Python process is running inside a Docker container — inspired by the popular [is-docker](https://github.com/sindresorhus/is-docker) npm package. Works on Linux, with optional cache refresh for repeated checks.
@@ -70,7 +70,7 @@ If you find this library useful, please consider:
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT License - see [LICENSE](https://github.com/ysskrishna/is-docker/blob/main/LICENSE) file for details.
 
 ## Author
 
