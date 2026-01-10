@@ -37,7 +37,9 @@ keywords = [
     "container-detection",
     "docker-detection",
     "utilities",
-    "utils"
+    "utils",
+    "mit license",
+    "ysskrishna"
 ]
 dependencies = []
 
@@ -50,6 +52,8 @@ dev = [
 Homepage = "https://github.com/ysskrishna/is-docker"
 Repository = "https://github.com/ysskrishna/is-docker.git"
 Issues = "https://github.com/ysskrishna/is-docker/issues"
+Changelog = "https://github.com/ysskrishna/is-docker/blob/main/CHANGELOG.md"
+Discussions = "https://github.com/ysskrishna/is-docker/discussions"
 
 [build-system]
 requires = ["hatchling"]

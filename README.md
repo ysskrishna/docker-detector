@@ -3,6 +3,8 @@
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/ysskrishna/is-docker/blob/main/LICENSE)
 ![Tests](https://github.com/ysskrishna/is-docker/actions/workflows/test.yml/badge.svg)
+[![PyPI](https://img.shields.io/pypi/v/is-docker)](https://pypi.org/project/is-docker/)
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/is-docker?period=total&units=INTERNATIONAL_SYSTEM&left_color=GREY&right_color=BLUE&left_text=downloads)](https://pepy.tech/projects/is-docker)
 
 Detect if your Python process is running inside a Docker container — inspired by the popular [is-docker](https://github.com/sindresorhus/is-docker) npm package. Works on Linux, with optional cache refresh for repeated checks.
 
@@ -54,6 +56,10 @@ is_docker(force_refresh=True)  # Performs new detection
 ## Credits
 
 This package is inspired by the [is-docker](https://github.com/sindresorhus/is-docker) npm package by [Sindre Sorhus](https://github.com/sindresorhus).
+
+## Changelog
+
+See [CHANGELOG.md](https://github.com/ysskrishna/is-docker/blob/main/CHANGELOG.md) for a detailed list of changes and version history.
 
 ## Contributing
 
