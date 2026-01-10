@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0]
 
 ### Added
-- Initial release of is-docker Python package
+- Initial release of docker-detector Python package
 - `is_docker()` function to check if the current process is running inside a Docker container
 - Linux-only detection using multiple methods:
   - Check for `/.dockerenv` file existence
@@ -28,5 +28,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Linux platform support
 - Graceful error handling for file system operations
 
-[1.0.0]: https://github.com/ysskrishna/is-docker/releases/tag/v1.0.0
+[1.0.0]: https://github.com/ysskrishna/docker-detector/releases/tag/v1.0.0
 

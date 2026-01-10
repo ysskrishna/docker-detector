@@ -1,5 +1,5 @@
 [project]
-name = "is-docker"
+name = "docker-detector"
 version = "1.0.0"
 description = "Detect if your Python process is running inside a Docker container — inspired by the popular is-docker npm package. Works on Linux, with optional cache refresh for repeated checks."
 readme = "README.md"
@@ -49,15 +49,15 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/ysskrishna/is-docker"
-Repository = "https://github.com/ysskrishna/is-docker.git"
-Issues = "https://github.com/ysskrishna/is-docker/issues"
-Changelog = "https://github.com/ysskrishna/is-docker/blob/main/CHANGELOG.md"
-Discussions = "https://github.com/ysskrishna/is-docker/discussions"
+Homepage = "https://github.com/ysskrishna/docker-detector"
+Repository = "https://github.com/ysskrishna/docker-detector.git"
+Issues = "https://github.com/ysskrishna/docker-detector/issues"
+Changelog = "https://github.com/ysskrishna/docker-detector/blob/main/CHANGELOG.md"
+Discussions = "https://github.com/ysskrishna/docker-detector/discussions"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["is_docker"]
+packages = ["docker_detector"]

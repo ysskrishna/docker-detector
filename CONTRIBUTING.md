@@ -1,6 +1,6 @@
-# Contributing to is-docker
+# Contributing to docker-detector
 
-Thank you for your interest in contributing to `is-docker`! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to `docker-detector`! This document provides guidelines and instructions for contributing.
 
 ## Getting Started
 
@@ -13,8 +13,8 @@ Thank you for your interest in contributing to `is-docker`! This document provid
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/ysskrishna/is-docker.git
-   cd is-docker
+   git clone https://github.com/ysskrishna/docker-detector.git
+   cd docker-detector
    ```
 
 2. **Install dependencies**:
@@ -40,7 +40,7 @@ uv run pytest
 Run a specific test file:
 
 ```bash
-uv run pytest tests/test_is_docker.py
+uv run pytest tests/test_docker_detector.py
 ```
 
 ### Code Style
@@ -54,7 +54,7 @@ uv run pytest tests/test_is_docker.py
 
 If you want to improve Docker detection methods:
 
-1. Edit `is_docker/core.py`
+1. Edit `docker_detector/core.py`
 2. Add new detection methods or improve existing ones
 3. Ensure the function handles errors gracefully (use try-except where appropriate)
 4. Add corresponding test cases in the test files
@@ -146,5 +146,5 @@ If you have questions about contributing, feel free to:
 - Open an issue on GitHub
 - Check existing issues and discussions
 
-Thank you for contributing to `is-docker`! 🎉
+Thank you for contributing to `docker-detector`! 🎉
 

@@ -1,10 +1,10 @@
-# Is Docker
+# Docker Detector
 
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/ysskrishna/is-docker/blob/main/LICENSE)
-![Tests](https://github.com/ysskrishna/is-docker/actions/workflows/test.yml/badge.svg)
-[![PyPI](https://img.shields.io/pypi/v/is-docker)](https://pypi.org/project/is-docker/)
-[![PyPI Downloads](https://static.pepy.tech/personalized-badge/is-docker?period=total&units=INTERNATIONAL_SYSTEM&left_color=GREY&right_color=BLUE&left_text=downloads)](https://pepy.tech/projects/is-docker)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/ysskrishna/docker-detector/blob/main/LICENSE)
+![Tests](https://github.com/ysskrishna/docker-detector/actions/workflows/test.yml/badge.svg)
+[![PyPI](https://img.shields.io/pypi/v/docker-detector)](https://pypi.org/project/docker-detector/)
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/docker-detector?period=total&units=INTERNATIONAL_SYSTEM&left_color=GREY&right_color=BLUE&left_text=downloads)](https://pepy.tech/projects/docker-detector)
 
 Detect if your Python process is running inside a Docker container — inspired by the popular [is-docker](https://github.com/sindresorhus/is-docker) npm package. Works on Linux, with optional cache refresh for repeated checks.
 
@@ -19,13 +19,13 @@ Detect if your Python process is running inside a Docker container — inspired 
 ## Installation
 
 ```bash
-pip install is-docker
+pip install docker-detector
 ```
 
 Or using `uv`:
 
 ```bash
-uv add is-docker
+uv add docker-detector
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ uv add is-docker
 ### Check if running inside Docker
 
 ```python
-from is_docker import is_docker
+from docker_detector import is_docker
 
 if is_docker():
     print("Running inside a Docker container")
@@ -44,7 +44,7 @@ else:
 ### Force refresh cache
 
 ```python
-from is_docker import is_docker
+from docker_detector import is_docker
 
 # Use cached result (default)
 is_docker()  # Fast, uses cache
@@ -59,7 +59,7 @@ This package is inspired by the [is-docker](https://github.com/sindresorhus/is-d
 
 ## Changelog
 
-See [CHANGELOG.md](https://github.com/ysskrishna/is-docker/blob/main/CHANGELOG.md) for a detailed list of changes and version history.
+See [CHANGELOG.md](https://github.com/ysskrishna/docker-detector/blob/main/CHANGELOG.md) for a detailed list of changes and version history.
 
 ## Contributing
 
@@ -76,7 +76,7 @@ If you find this library useful, please consider:
 
 ## License
 
-MIT License - see [LICENSE](https://github.com/ysskrishna/is-docker/blob/main/LICENSE) file for details.
+MIT License - see [LICENSE](https://github.com/ysskrishna/docker-detector/blob/main/LICENSE) file for details.
 
 ## Author
 
