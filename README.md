@@ -6,7 +6,7 @@
 [![PyPI](https://img.shields.io/pypi/v/docker-detector)](https://pypi.org/project/docker-detector/)
 [![PyPI Downloads](https://static.pepy.tech/personalized-badge/docker-detector?period=total&units=INTERNATIONAL_SYSTEM&left_color=GREY&right_color=BLUE&left_text=downloads)](https://pepy.tech/projects/docker-detector)
 
-Detect if your Python process is running inside a Docker container — inspired by the popular [is-docker](https://github.com/sindresorhus/is-docker) npm package. Works on Linux, with optional cache refresh for repeated checks.
+Detect if your Python process is running inside a Docker container. Inspired by the popular [is-docker](https://github.com/sindresorhus/is-docker) npm package. Supports cached results with optional refresh.
 
 ## Features
 
