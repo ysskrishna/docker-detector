@@ -53,6 +53,33 @@ is_docker()  # Fast, uses cache
 is_docker(force_refresh=True)  # Performs new detection
 ```
 
+## API Reference
+
+Install with `pip install docker-detector` and import from `docker_detector`. Signatures and descriptions below match the source code of `docker_detector`.
+
+### `is_docker(force_refresh: bool = False) -> bool`
+
+Return True if the current process is running inside Docker.
+
+Linux-only detection. Returns False on macOS and Windows.
+
+**Parameters**
+
+- `force_refresh`: If True, bypass the cache and perform a fresh check. Defaults to False.
+
+**Returns**
+
+- True if running inside Docker, False otherwise.
+
+**Example**
+
+```python
+from docker_detector import is_docker
+
+is_docker()  # False  (Uses cache)
+is_docker(force_refresh=True)  # False  (Bypasses cache)
+```
+
 ## Credits
 
 This package is inspired by the [is-docker](https://github.com/sindresorhus/is-docker) npm package by [Sindre Sorhus](https://github.com/sindresorhus).
