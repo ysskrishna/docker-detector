@@ -5,6 +5,8 @@
 ![Tests](https://github.com/ysskrishna/docker-detector/actions/workflows/test.yml/badge.svg)
 [![PyPI](https://img.shields.io/pypi/v/docker-detector)](https://pypi.org/project/docker-detector/)
 [![PyPI Downloads](https://static.pepy.tech/personalized-badge/docker-detector?period=total&units=INTERNATIONAL_SYSTEM&left_color=GREY&right_color=BLUE&left_text=downloads)](https://pepy.tech/projects/docker-detector)
+[![Context7](https://img.shields.io/badge/Context7-docs-18181B)](https://context7.com/ysskrishna/docker-detector)
+[![Ask DeepWiki](https://img.shields.io/badge/DeepWiki-ask-18181B)](https://deepwiki.com/ysskrishna/docker-detector)
 
 Detect if your Python process is running inside a Docker container. Inspired by the popular [is-docker](https://github.com/sindresorhus/is-docker) npm package. Supports cached results with optional refresh.
 
