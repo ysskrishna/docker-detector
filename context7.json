@@ -1,0 +1,29 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "docker-detector",
+  "description": "Zero-dependency Python library that detects whether the current process runs inside a Docker container on Linux, with a cached result. Python port of the is-docker npm package.",
+  "excludeFolders": [
+    "archive",
+    "archived",
+    "old",
+    "deprecated",
+    "legacy",
+    "tests",
+    ".github"
+  ],
+  "excludeFiles": [
+    "CHANGELOG.md",
+    "changelog.md",
+    "LICENSE.md",
+    "license.md",
+    "CODE_OF_CONDUCT.md",
+    "NEWS.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
+    "AGENTS.md"
+  ],
+  "rules": [
+    "Import is_docker from docker_detector. It always returns False on macOS and Windows; use container-detect for Podman or Kubernetes.",
+    "The result is cached; call is_docker(force_refresh=True) to check again."
+  ]
+}
